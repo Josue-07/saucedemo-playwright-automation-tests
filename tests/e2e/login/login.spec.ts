@@ -1,0 +1,63 @@
+import { test } from '@playwright/test';
+import { LoginPage } from '../../support/pages/login.page';
+import { LoginFormModel } from '../../support/fixtures/login-model/login-form.model';
+import dataLogin from '../../support/fixtures/login-model/login.data.json';
+
+let loginPage: LoginPage;
+
+test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page);
+    await loginPage.acessarPaginaLogin();
+})
+
+test.describe('Página de Login', { tag: '@login' }, () => {
+
+    test('CT001 - Realizar login com credenciais válidas', {
+        tag: ['@smoke', '@caminho-feliz']
+    }, async () => {
+
+        const formLoginSucesso: LoginFormModel = dataLogin.credenciaisValidas;
+
+        await loginPage.preencherFormularioDeLogin(formLoginSucesso);
+        await loginPage.validarLoginComSucesso
+    })
+
+    test('CT002 - Realizar login com credenciais inválidas', {
+        tag: ['@regressivo', '@caminho-negativo']
+    }, async () => {
+
+        const formLoginInvalido: LoginFormModel = dataLogin.credenciaisInvalidas;
+
+        await loginPage.preencherFormularioDeLogin(formLoginInvalido);
+        await loginPage.validarMensagemDeErroCredenciaisInvalidas();
+
+    })
+
+    test('CT003 - Realizar login com username vazio', {
+        tag: ['@regressivo', '@caminho-negativo']
+    }, async () => {
+        const formLoginUsernameVazio: LoginFormModel = dataLogin.usernameVazio;
+
+        await loginPage.preencherFormularioDeLogin(formLoginUsernameVazio);
+        await loginPage.validarMensagemDeErroUsernameVazio();
+    })
+
+    test('CT004 - Realizar login com password vazio', {
+        tag: ['@regressivo', '@caminho-negativo']
+    }, async () => {
+        const formLoginPasswordVazio: LoginFormModel = dataLogin.passwordVazio;
+
+        await loginPage.preencherFormularioDeLogin(formLoginPasswordVazio);
+        await loginPage.validarMensagemDeErroPasswordVazio();
+    })
+
+    test('CT005 - Realizar login com usuário bloqueado', {
+        tag: ['@regressivo', '@caminho-negativo']
+    }, async () => {
+        const formLoginUsuarioBloqueado: LoginFormModel = dataLogin.usuarioSemAcesso;
+
+        await loginPage.preencherFormularioDeLogin(formLoginUsuarioBloqueado);
+        await loginPage.validarMensagemDeErroUsuarioBloqueado();
+    })
+
+})
