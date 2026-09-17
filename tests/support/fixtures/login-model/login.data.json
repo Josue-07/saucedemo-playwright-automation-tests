@@ -1,0 +1,22 @@
+{
+    "credenciaisValidas": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+    },
+    "credenciaisInvalidas": {
+        "username": "invalid_user",
+        "password": "invalid_password"
+    },
+    "usernameVazio": {
+        "username": "",
+        "password": "secret_sauce"
+    },
+    "passwordVazio": {
+        "username": "standard_user",
+        "password": ""
+    },
+    "usuarioSemAcesso": {
+        "username": "locked_out_user",
+        "password": "secret_sauce"
+    }
+}
