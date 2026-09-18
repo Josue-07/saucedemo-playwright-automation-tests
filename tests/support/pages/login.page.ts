@@ -18,7 +18,8 @@ export class LoginPage {
         await this.page.click('#login-button');
     }
 
-    async validarLoginComSucesso() {
+    async realizarLoginComSucesso(formLogin: LoginFormModel) {
+        await this.preencherFormularioDeLogin(formLogin);
         await expect(this.page).toHaveURL('/inventory.html');
     }
 

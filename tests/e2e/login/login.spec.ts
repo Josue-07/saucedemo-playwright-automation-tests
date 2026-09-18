@@ -18,8 +18,7 @@ test.describe('Página de Login', { tag: '@login' }, () => {
 
         const formLoginSucesso: LoginFormModel = dataLogin.credenciaisValidas;
 
-        await loginPage.preencherFormularioDeLogin(formLoginSucesso);
-        await loginPage.validarLoginComSucesso
+        await loginPage.realizarLoginComSucesso(formLoginSucesso);
     })
 
     test('CT002 - Realizar login com credenciais inválidas', {
