@@ -18,7 +18,7 @@ export class LoginPage {
         await this.page.click('#login-button');
     }
 
-    async realizarLoginComSucesso(formLogin: LoginFormModel) {
+    async realizarLoginComSucesso(formLogin: LoginFormModel = { username: 'standard_user', password: 'secret_sauce' }) {
         await this.preencherFormularioDeLogin(formLogin);
         await expect(this.page).toHaveURL('/inventory.html');
     }

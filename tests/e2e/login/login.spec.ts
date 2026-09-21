@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }) => {
 test.describe('Página de Login', { tag: '@login' }, () => {
 
     test('CT001 - Realizar login com credenciais válidas', {
-        tag: ['@smoke', '@caminho-feliz']
+        tag: ['@CT001', '@smoke', '@positivo']
     }, async () => {
 
         const formLoginSucesso: LoginFormModel = dataLogin.credenciaisValidas;
@@ -22,7 +22,7 @@ test.describe('Página de Login', { tag: '@login' }, () => {
     })
 
     test('CT002 - Realizar login com credenciais inválidas', {
-        tag: ['@regressivo', '@caminho-negativo']
+        tag: ['@CT002', '@regressivo', '@negativo']
     }, async () => {
 
         const formLoginInvalido: LoginFormModel = dataLogin.credenciaisInvalidas;
@@ -33,7 +33,7 @@ test.describe('Página de Login', { tag: '@login' }, () => {
     })
 
     test('CT003 - Realizar login com username vazio', {
-        tag: ['@regressivo', '@caminho-negativo']
+        tag: ['@CT003', '@regressivo', '@negativo']
     }, async () => {
         const formLoginUsernameVazio: LoginFormModel = dataLogin.usernameVazio;
 
@@ -42,7 +42,7 @@ test.describe('Página de Login', { tag: '@login' }, () => {
     })
 
     test('CT004 - Realizar login com password vazio', {
-        tag: ['@regressivo', '@caminho-negativo']
+        tag: ['@CT004', '@regressivo', '@negativo']
     }, async () => {
         const formLoginPasswordVazio: LoginFormModel = dataLogin.passwordVazio;
 
@@ -51,7 +51,7 @@ test.describe('Página de Login', { tag: '@login' }, () => {
     })
 
     test('CT005 - Realizar login com usuário bloqueado', {
-        tag: ['@regressivo', '@caminho-negativo']
+        tag: ['@CT005', '@regressivo', '@negativo']
     }, async () => {
         const formLoginUsuarioBloqueado: LoginFormModel = dataLogin.usuarioSemAcesso;
 
