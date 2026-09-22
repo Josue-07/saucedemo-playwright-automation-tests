@@ -57,6 +57,12 @@ export class ProductsPage {
         await expect(this.page).toHaveURL('https://www.saucedemo.com');
     }
 
+    async clicarItemMenuResetAppState() {
+        const itemMenuResetAppState = this.page.locator(productsSelectors.menuResetAppState);
+        await expect(itemMenuResetAppState).toBeEnabled();
+        await itemMenuResetAppState.click()
+    }
+
     async selecionarOrdenadorDeProdutos(valueOpition: string): Promise<Locator> {
         const ordernadorDeProdutos = this.page.locator(productsSelectors.ordenadorDeProdutos);
         await expect(ordernadorDeProdutos).toBeVisible();
@@ -64,6 +70,17 @@ export class ProductsPage {
         return ordernadorDeProdutos
     }
 
+    async adicionarItemAoCarrinho() {
+        const addItemCarrinho = this.page.locator(productsSelectors.addItemCarrinho);
+        await expect(addItemCarrinho).toBeEnabled();
+        await addItemCarrinho.click();
+    }
+
+    async validarNumberBadgeCarrinho() {
+        const numberBadge = this.page.locator(productsSelectors.numberBadge);
+        await expect(numberBadge).toBeVisible();
+        await expect(numberBadge).toHaveText('1');
+    }
 
     async validarTituloDaPaginaDeProdutos() {
         const tituloDaPagina = this.page.locator(productsSelectors.tituloPaginaProduto);

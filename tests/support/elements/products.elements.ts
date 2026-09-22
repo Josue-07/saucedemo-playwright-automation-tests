@@ -11,6 +11,8 @@ export const productsSelectors = {
     todosOsMenusDoMenuDeProduto: '.bm-item-list a',
     menuResetAppState: '#reset_sidebar_link',
     nomeDeTodosOsProdutosNaPagina: '.inventory_item_name',
-    precoDeTodosOsProdutosNaPagina: '.inventory_item_price'
+    precoDeTodosOsProdutosNaPagina: '.inventory_item_price',
+    addItemCarrinho: 'xpath=(//button[@class="btn btn_primary btn_small btn_inventory "])[1]',
+    numberBadge: '#shopping_cart_container  > a > span'
 
 }

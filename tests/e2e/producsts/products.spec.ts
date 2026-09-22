@@ -91,9 +91,18 @@ test.describe('Página de Produtos', { tag: '@produtos' }, () => {
         await productsPage.validarOrdenadorDeProdutosPorPrecoCrescentePaginaDeProdutos(Ordem.Crescente)
     })
 
-      test('CT013 - Validar ordenação de produtos por preco na ordem decrescente', {
+    test('CT013 - Validar ordenação de produtos por preco na ordem decrescente', {
         tag: ['@CT013', '@regressivo', '@positivo']
     }, async () => {
         await productsPage.validarOrdenadorDeProdutosPorPrecoDecrescentePaginaDeProdutos(Ordem.Decrescente)
+    })
+
+    test('CT014 - Validar item adicionado ao carrinho', {
+        tag: ['@CT014', '@regressivo', '@positivo']
+    }, async () => {
+        await productsPage.adicionarItemAoCarrinho();
+        await productsPage.validarNumberBadgeCarrinho();
+        await productsPage.clicarBotaoDeMenuPaginaDeProdutos();
+        await productsPage.clicarItemMenuResetAppState();
     })
 })  
